@@ -23,7 +23,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        if [ -f requirements.txt ] then pip install -r requirements.txt; f1
+        pip install -r requirements.txt;
     - name: Check docker Installed
       run: docker run hello-world
     - name: Push to docker Hub
