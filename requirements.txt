@@ -1,0 +1,7 @@
+Flask
+pylint
+click
+pandas
+numpy
+sklearn
+scipy
