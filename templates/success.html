@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border = 1>
+        {% for key, value in result.items() %}
+
+            <tr>
+               <th> {{ key }} </th>
+               <td> {{ value }} </td>
+            </tr>
+
+        {% endfor %}
+    </table>
+    <p><a href="{{ url_for('index') }}">Go Back</a></p>
+</body>
+</html>
