@@ -27,13 +27,7 @@ def process():
     movie_list = get_recommended_movies(name)
     print(name)
     return render_template("success.html", result=movie_list)
-    # title = request.form['title']
-    # print(title)
-    # sys.exit()
-    # return render_template('success.html', result=result)
-    #movie_list = get_recommended_movies(title)
-    #return render_template('lists.html', error_code=error_code, imdbid_list=my_list, movie_list=movie_list)
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))

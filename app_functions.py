@@ -58,8 +58,6 @@ def index_in_list(a_list, index):
 def get_movie_recommendation(movie_name, knn, movies, final_dataset, csr_data):
     n_movies_to_reccomend = 10
     movie_list = movies[movies['title'].str.contains(movie_name.strip())]
-    # print(movie_list)
-    # sys.exit()
     if len(movie_list):
         movie_idx = movie_list.iloc[0]['movieId']
         movie_idx = final_dataset[final_dataset['movieId'] == movie_idx].index[0]
@@ -71,23 +69,16 @@ def get_movie_recommendation(movie_name, knn, movies, final_dataset, csr_data):
         for val in rec_movie_indices:
             movie_idx = final_dataset.iloc[val[0]]['movieId']
             idx = movies[movies['movieId'] == movie_idx].index
-            # print(len(list(movies.iloc[idx]['title'])))
-            # sys.exit()
             if len(list(movies.iloc[idx]['title'])) > 0:
                 recs[val[0]] = list(movies.iloc[idx]['title'])[0]
                 # print(list(movies.iloc[idx]['title'])[0])
-        # sys.exit()
-        #recommend_frame.append({'Title': movies.iloc[idx]['title'].values[0], 'Distance': val[1]})
-        # df = pd.DataFrame(recommend_frame, index=range(1, n_movies_to_reccomend + 1))
-        # print(recs)
-        # sys.exit()
+
         return recs
     else:
         return "No movies found. Please check your input"
 
 
 def get_recommended_movies(movie):
-    # print(movie)
 
     movies_titles_data = load_movies_data()
 
@@ -107,7 +98,4 @@ def get_recommended_movies(movie):
 
     knn = get_movie_model(csr_data)
     df = get_movie_recommendation(movie, knn, movies_titles_data, final_dataset, csr_data)
-
-    # print(df)
-    # sys.exit()
     return df
